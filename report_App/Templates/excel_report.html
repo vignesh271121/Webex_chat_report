@@ -1,0 +1,67 @@
+<Html>
+<head>
+<title>
+</title>
+
+    <style>
+
+.center {
+  margin: auto;
+  width: 60%;
+  border: 3px solid #73AD21;
+  padding: 10px;
+}
+
+input[type=text] {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid red;
+  border-radius: 4px;
+}
+input[type=date] {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid red;
+  border-radius: 4px;
+}
+input[type=submit] {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid red;
+  border-radius: 4px;
+}
+    </style>
+</head>
+<body bgcolor="#34568b">
+<br>
+<br>
+<div align="center">
+<form action = "{% url 'download_data' %}" method = "POST">
+    {% csrf_token %}
+    <label> Authentication Token</label>
+<input type="text" id="token" name="token" size="15"/> <br> <br>
+<label for="date_val">Date:</label>
+  <input type="date" id="date_val" name="date_val">
+
+<label>
+<br>
+<br>
+Room:
+</label><select name="room_id" id="room_id">
+    <option value="support">Devnet support room</option>
+    <option value="program">Devnet program room</option>
+    </select>
+
+<br> <br>
+    <input type="submit" value="Download">
+</form>
+</div>
+
+</body>
+</html>
