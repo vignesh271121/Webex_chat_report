@@ -22,7 +22,7 @@ def web_chat(url_val,bear_auth,month_check,room_data_get):
 
     get_date_list = []
     get_Id_list = []
-
+    get_parentID_list = []
 
     for i in range(len(data['items'])):
         k=str(data['items'][i]['created'])
@@ -31,10 +31,12 @@ def web_chat(url_val,bear_auth,month_check,room_data_get):
         if month_val[1] == str(month_check):
             get_date_list.append(data['items'][i]['created'])
             get_Id_list.append(data['items'][i]['id'])
-
+            if "parentId" in data['items'][i]:
+                get_parentID_list.append(data['items'][i]['parentId'])
 
     print(get_Id_list)
     get_date_list.reverse()
+    get_parentID_list.reverse()
     print(get_Id_list)
 
     get_Id_list.reverse()
@@ -44,7 +46,7 @@ def web_chat(url_val,bear_auth,month_check,room_data_get):
     datetime_object = datetime.datetime.strptime(month_number, "%m")
     month_name = datetime_object.strftime("%b")
 
-    workbook = xlsxwriter.Workbook('C:/Users/vinagend/OneDrive - Cisco/Desktop/test_data/'+room_data_get+"_"+month_name+str(year)+'.xlsx')
+    workbook = xlsxwriter.Workbook('C:/Users/vinagend/OneDrive - Cisco/Desktop/test_data/'+month_name+str(year)+'.xlsx')
     worksheet = workbook.add_worksheet("My sheet")
 
     row = 0
@@ -86,10 +88,9 @@ def web_chat(url_val,bear_auth,month_check,room_data_get):
                             row += 1
 
     workbook.close()
-    get_date_list.clear()
-    get_Id_list.clear()
 
 # Press the green button in the gutter to run the script.
+
 
 def download(room_get_data,get_date,get_bear_token):
     room_data = room_get_data
@@ -110,5 +111,7 @@ def download(room_get_data,get_date,get_bear_token):
         url_get_data ='https://webexapis.com/v1/messages?roomId=Y2lzY29zcGFyazovL3VzL1JPT00vYzQ2OTk3NTAtZGIyNy0xMWU1LWI0ZjQtZmJmMjI3Y2ZmYWYz&before='+date_format_value+'&max=1000'
 
     web_chat(url_get_data,bear_token,month,room_data)
+
+
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
