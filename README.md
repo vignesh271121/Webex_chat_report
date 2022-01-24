@@ -16,3 +16,7 @@
 
 **STEP 7:** Run the app. From the Webex_data_generate folder, run the command 'python manage.py runserver' and use your web browser go to the URL presented in the terminal, such as http://127.0.0.1:8000/. You'll find your authentication token here (https://developer.webex.com/docs/getting-started). Choose a date and room and hit 'Download'. Your results will print.(https://user-images.githubusercontent.com/97229745/150739281-217ac9a0-2d7a-4da8-bc2f-3e1d3228d8fa.png)
 ![image](https://user-images.githubusercontent.com/97229745/150739612-6f270fd1-d505-425d-867d-4ba276b3afb4.png)
+
+![image](https://user-images.githubusercontent.com/97229745/150740147-de0f386e-dc3b-4c06-9874-52f4f6eecd30.png)
+![image](https://user-images.githubusercontent.com/97229745/150740250-365fb137-0dfe-4b31-b275-75bd41cebcca.png)
+![image](https://user-images.githubusercontent.com/97229745/150740286-27780484-201b-4a09-b647-a3fc850a4beb.png)
