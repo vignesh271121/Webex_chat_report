@@ -11,6 +11,7 @@ matplotlib==3.5.1
 numpy==1.22.1
 openpyxl==3.0.9
 packaging==21.3
+requests==2.7.0
 six==1.16.0
 sqlparse==0.4.2
 tzdata==2021.5
