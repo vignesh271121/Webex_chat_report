@@ -2,6 +2,9 @@
 #### Webex_data_generate
 This repo is used for generating the WebEx Chat report from two DevNet public rooms namely Support and Program rooms in Excel format
 
+### Purpose of project
+- Reducing manual work and time management
+
 ## Requirements
 - Python
 - Django framework
