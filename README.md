@@ -420,7 +420,7 @@ button{
         document.getElementsByClassName("loader")[0].style.display = "block";
     }
     </script>
-    ```
+  ```
     
 ### .Html file
 
@@ -460,6 +460,16 @@ button{
     </form>
 </body>
 ```
+
+![image](https://user-images.githubusercontent.com/97229745/151296551-0cb0ba86-4826-405e-bf2e-05a07855872a.png)
+
+### click Download button
+
+![image](https://user-images.githubusercontent.com/97229745/151296648-0866e118-081b-469a-9b99-ee85fcc2d434.png)
+![image](https://user-images.githubusercontent.com/97229745/151296698-ba7e3842-aa84-47c0-bc48-6a6c79709652.png)
+
+
+
 
     
  
