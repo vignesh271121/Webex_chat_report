@@ -47,7 +47,7 @@ def web_chat(url_val,bear_auth,month_check,room_data_get,year_val_get):
         month_name = datetime_object.strftime("%b")
 
         workbook = xlsxwriter.Workbook(
-            'C:/Users/vinagend/OneDrive - Cisco/Desktop/test_data/' + room_data_get + "_" + month_name + str(
+            'folder_path/' + room_data_get + "_" + month_name + str(
                 year_val_get) + '.xlsx')
         worksheet = workbook.add_worksheet(month_name + str(year_val_get))
 
