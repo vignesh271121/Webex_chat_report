@@ -1,4 +1,3 @@
-{% load static %}
 <html lang="en">
 <head>
     <style media="screen">
@@ -11,6 +10,7 @@
 }
 body{
     background-color: #080719;
+    background-image: url({% static 'images/room_img.png'
 
 }
 .background{
@@ -20,14 +20,12 @@ body{
     transform: translate(-50%,-50%);
     left: 50%;
     top: 50%;
-    background-image: url({% static 'images/room_img.png'%}");
 }
 .background .shape{
     height: 200px;
     width: 200px;
     position: absolute;
     border-radius: 50%;
-
 }
 
 form{
@@ -161,23 +159,100 @@ button{
 .option:hover {
   background:#666;
 }
-.first-info{
-    width: 100%;
-    height: 300px;
-    background-image: url( "{% static 'img/background_img.jpg' %}");
-}
-    </style>
 
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.loader {
+  display: none;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.loading {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border-top-color: #1ecd97;
+  border-left-color: #1ecd97;
+  animation: spin 1s infinite ease-in;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+   </style>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(function() {
+                $( "#alert_flag" ).dialog({
+                    modal: true,
+                    closeOnEscape: false,
+                    dialogClass: "no-close",
+                    resizable: false,
+                    draggable: false,
+                    width: 600,
+                    buttons: [
+                        {
+                            text: "OK",
+                            click: function() {
+                            $( this ).dialog( "close" );
+                            }
+                        }
+                    ]
+                });
+            });
+        });
+
+    function validateForm() {
+         var token_val = document.forms["webex_form"]["token"].value;
+         let date_val = document.forms["webex_form"]["date_val"].value;
+         if (token_val == "") {
+            alert("please find this URL[https://developer.webex.com/docs/getting-started] to get a Token");
+            return false;
+         }else if (date_val == "") {
+            alert("Date must be filled out");
+            return false;
+         }
+         else{
+            spinner()
+
+        }
+    }
+
+    function spinner() {
+        document.getElementsByClassName("loader")[0].style.display = "block";
+    }
+    </script>
 
 </head>
 <body>
-
     <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
 
-    <form action = "{% url 'download_data' %}" method = "POST">
+    {% if alert_flag == "True" %}
+        <div id="alert_flag" title="alert_flag">
+            <script>alert('{{ file_name }}')</script>
+        </div>
+    {% endif %}
+    <form name="webex_form" action = "{% url 'download_data' %}" method = "POST" onsubmit="return validateForm()">
         {% csrf_token %}
         <h3>Webex Chat Report</h3>
         <label for="Token">Authentication Token</label>
@@ -191,12 +266,13 @@ button{
             <option value="support" class="option">Devnet support room</option>
             <option value="program" class="option">Devnet program room</option>
         </select>
-
         <br>
-        <input type="submit" value="Download" style="background-color: #4CAF50">
-        </br>
-
-    </form>
+        <input type="submit" value="Download" class="sbtn btn btn-secondary btn-c"  style="background-color: #4CAF50">
+        <div class="loader">
+            <div class="loading">
         </div>
+        </div>
+        </br>
+    </form>
 </body>
 </html>
